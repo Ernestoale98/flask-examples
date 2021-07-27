@@ -7,11 +7,11 @@
 
 [TEST]
 
-SECRET_KEY = 'super_secret_key_value'
+SECRET_KEY = super_secret_key_value
 #MONGO CLUSTER URI e.g
 #
 # mongodb+srv://<user>:<password>@<cluster>.myrge.mongodb.net
 #
-MONGO_CLUSTER_URI = 'mongo_cluster_uri'
+MONGO_CLUSTER_URI = mongo_cluster_uri
 #Use sample_training db inside of 'Load Sample Dataset' of mongo cluster
-MONGO_DB = 'sample_training'
+MONGO_DB = sample_training
