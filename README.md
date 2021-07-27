@@ -1,3 +1,14 @@
+##Description
+This project was created by make examples of different packages of python and flask
+like:
+
+1. pymongo
+2. mongoengine
+3. pytest
+4. pytest-flask
+
+
+
 ## Requirements
 
 Server of Mongo DB (atlas) with db 'sample_training' this db is part of 
