@@ -8,6 +8,12 @@ import pytest
 import os
 import configparser
 
+# Pymongo
+from pymongo import MongoClient
+
+# MongoEngine
+from mongoengine import connect
+
 config = configparser.ConfigParser()
 config.read(os.path.abspath(os.path.join(".ini")))
 
@@ -22,3 +28,13 @@ def app():
     app.config['MONGO_DB'] = config['TEST']['MONGO_DB']
 
     return app
+
+@pytest.fixture
+def db():
+    db = MongoClient(config['TEST']['MONGO_CLUSTER_URI'])[config['TEST']['MONGO_DB']]
+    return db
+
+@pytest.fixture
+def connection():
+    connection = connect(host="{}/{}?authSource=admin".format(config['TEST']['MONGO_CLUSTER_URI'],config['TEST']['MONGO_DB']))
+    return connection
