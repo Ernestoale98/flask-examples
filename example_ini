@@ -1,0 +1,17 @@
+# Rename this file to .ini with te command
+#
+# cp example_ini .ini
+#
+# to set configuration 
+
+
+[TEST]
+
+SECRET_KEY = 'super_secret_key_value'
+#MONGO CLUSTER URI e.g
+#
+# mongodb+srv://<user>:<password>@<cluster>.myrge.mongodb.net
+#
+MONGO_CLUSTER_URI = 'mongo_cluster_uri'
+#Use sample_training db inside of 'Load Sample Dataset' of mongo cluster
+MONGO_DB = 'sample_training'
