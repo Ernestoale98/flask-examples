@@ -12,6 +12,5 @@ SECRET_KEY = super_secret_key_value
 #
 # mongodb+srv://<user>:<password>@<cluster>.myrge.mongodb.net
 #
-MONGO_CLUSTER_URI = mongo_cluster_uri
-#Use sample_training db inside of 'Load Sample Dataset' of mongo cluster
+MONGO_CLUSTER_URI = mongodb+srv://user-test:password12345@trainings.myrge.mongodb.net
 MONGO_DB = sample_training
