@@ -50,7 +50,7 @@ Add your Mongo credentials in example_ini and create .ini file with
 Run test to verify connection with 'sample_training' db
 
 ```bash
-    pytest tests/test_db_connection.py
+    pytest -m db_connection
 ```
 Run all tests
 

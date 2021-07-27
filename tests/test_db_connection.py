@@ -7,7 +7,7 @@ import pytest
 from pymongo import MongoClient
 
 
-@pytest.mark.usefixtures('config')
+@pytest.mark.db_connection
 def test_db_connection_with_pymongo(client,config):
     """
     Test to verify connection with db 'sample_training'
@@ -30,7 +30,7 @@ def get_coll_names(config):
 from mongoengine import connect
 
 
-@pytest.mark.usefixtures('config')
+@pytest.mark.db_connection
 def test_db_connection_with_mongoengine(client,config):
     connection = connect(host="{}/{}?authSource=admin".format(config['MONGO_CLUSTER_URI'],config['MONGO_DB']))
     assert isinstance(connection, MongoClient)

@@ -6,17 +6,20 @@ from pymongo import ASCENDING, DESCENDING
 
 # App
 from app.models.company import Company
+
+
+
 """PyMongo"""
 
 
-@pytest.mark.usefixtures('db')
+@pytest.mark.companies
 def test_get_company_with_pymongo(client,db):
     company = db.companies.find_one({
         "name":"Facebook"
     })
     assert company['name'] == 'Facebook'
 
-@pytest.mark.usefixtures('db')
+@pytest.mark.companies
 def test_sort_companies_with_pymongo(client,db):
     companies = list(db.companies.find().sort("name", ASCENDING).limit(10))
     assert len(companies) == 10
@@ -27,7 +30,7 @@ def test_sort_companies_with_pymongo(client,db):
     assert companies[0]['name'] == 'zyntroPICS'
 
 
-@pytest.mark.usefixtures('db')
+@pytest.mark.companies
 def test_query_operators_with_pymongo(client,db):
     companies = db.companies.count_documents({
         "number_of_employees":{
@@ -46,17 +49,18 @@ def test_query_operators_with_pymongo(client,db):
     })
     assert companies == 4
 
+
 """MongoEngine"""
 
 
-@pytest.mark.usefixtures('connection')
+@pytest.mark.companies
 def test_get_company_with_mongoengine(client,connection):
     company = Company.objects(name='Facebook').first()
     assert company['name'] == 'Facebook'
 
 
-@pytest.mark.usefixtures('connection')
-def test_sort_companoes_with_mongoengine(client,connection):
+@pytest.mark.companies
+def test_sort_companies_with_mongoengine(client,connection):
     companies = list(Company.objects().order_by('+name').limit(10))
     assert len(companies) == 10
     assert companies[0]['name'] == '(fluff)Friends'
@@ -66,7 +70,7 @@ def test_sort_companoes_with_mongoengine(client,connection):
     assert companies[0]['name'] == 'zyntroPICS'
 
 
-@pytest.mark.usefixtures('connection')
+@pytest.mark.companies
 def test_query_operators_with_mongoengine(client,connection):
     companies = Company.objects(number_of_employees__gte=50).count()
     assert companies == 904
